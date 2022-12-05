@@ -1,0 +1,56 @@
+<!--
+ * @Author: Yz_brightFuture 10409053+yz-brightfuture@user.noreply.gitee.com
+ * @Date: 2022-12-02 15:06:09
+ * @LastEditors: Yz_brightFuture 10409053+yz-brightfuture@user.noreply.gitee.com
+ * @LastEditTime: 2022-12-02 15:18:29
+ * @FilePath: \JS基础练习\087setProperty练习.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 70%;
+            height: 500px;
+            border: 1px solid black;
+
+        }
+
+        .qiu {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: blue;
+            animation: moving 2s infinite;
+
+        }
+
+        @keyframes moving {
+
+            50% {
+                transform: translate(calc(var(--w) - 100%));
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="qiu"></div>
+    </div>
+    <script>
+        let main = document.querySelector(".main")
+        let qiu = document.querySelector(".qiu")
+        qiu.style.setProperty('--w', main.offsetWidth + "px")
+
+    </script>
+</body>
+
+</html>

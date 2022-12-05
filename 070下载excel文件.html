@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="downLoadExcel()">下载excel</button>
+    <script>
+        const download = (data, name) => {
+            console.log(2);
+            const a = document.createElement('a')
+            const result = data.map(v => {
+                return Object.values(v).join('\t')
+            }).join('\n')
+            a.href = URL.createObjectURL(new Blob([result]))
+            a.setAttribute('download', name)
+            a.click()
+        }
+        const downLoadExcel = () => {
+            console.log(1);
+            download([{ id: 'ID', name: "姓名" }, { id: '张三', name: "里斯" }], '用户信息.xls')
+        }
+    </script>
+</body>
+
+</html>

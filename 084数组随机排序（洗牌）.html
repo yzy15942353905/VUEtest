@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function randomSort(array) {
+            let length = array.length;
+
+            if (!Array.isArray(array) || length <= 1) return;
+
+            for (let index = 0; index < length - 1; index++) {
+                let randomIndex = Math.floor(Math.random() * (length - index)) + index;
+                // es6
+                [array[index], array[randomIndex]] = [array[randomIndex], array[index]];
+            }
+
+            return array;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var a = {
+            id: '1'
+        }
+        var b = {
+            id: '1'
+        }
+        //由于对象地址不同，所以不会被去重，但是在业务中却需要去重
+        arr = [a, b]
+        //ES6  n方
+        function fn(arr) {
+            return [...new Set(arr)]
+            // return Array.from(new Set(arr))
+        }
+        console.time()
+        console.log(fn(arr));
+        console.timeEnd()
+        // n 覆盖key 但是对象会出错
+        function ObjFn(arr) {
+            let obj = {};
+            arr.forEach((item) => {
+                obj[item] = '';
+            })
+            return Object.keys(obj)
+        }
+        console.time()
+        console.log(ObjFn(arr));
+        console.timeEnd()
+        //递归写一个呢
+
+        var fun = function (arr) {
+
+            let result = []
+            for (let i = 0; i < arr.length; i++) {
+                for (let j = 0; j < result.length; j++) {
+                    var isFind = false
+                    if (isFun(arr[i], result[j])) {
+
+                        isFind = true;
+                        break
+                    }
+                }
+                if (!isFind) {
+                    result.push(arr[i])
+                }
+            }
+
+
+            return result
+        }
+        //判断函数
+        function isFun(a, b) {
+
+            if (typeof a != 'object' && typeof b != 'object') {
+                if (a === b) {
+                    return true
+                }
+            }else if(Array.isArray(a) && Array.isArray(b)){
+                
+            }
+        }
+        console.log(fun(arr));
+    </script>
+</body>
+
+</html>

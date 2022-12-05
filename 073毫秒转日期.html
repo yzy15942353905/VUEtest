@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p></p>
+    <script>
+        // 发现新大陆了
+        // new Date().toLocaleString() -- '2022/11/16 09:55:08'
+        let p = document.querySelector('p')
+        setInterval(() => {
+            p.innerText = timeType(+new Date(), { tab: "/", week: true, sfm: true })
+        }, 1000);
+        /* 
+        param：time:毫秒，option:配置项 包括tab:间隔，week:是否返回星期几 ,sfm :是否返回时分秒
+        return：2022/9/29 ||2022/9/29 星期四
+        */
+        function timeType(time, option) {
+            let result = undefined
+            tab = option ? option.tab : "-"
+            let date = new Date(time)
+            let Y = date.getFullYear()
+            let M = date.getMonth + 1 <= 9 ? "0" + date.getMonth() + 1 : date.getMonth() + 1
+            let D = date.getDate() <= 9 ? "0" + date.getDate() : date.getDate()
+            result = Y + tab + M + tab + D
+            if (option && option.week) {
+                let W = date.getDay()
+                let arr = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
+                result = result + " " + arr[W]
+            }
+
+            if (option && option.sfm) {
+                let hour = date.getHours() <= 9 ? "0" + date.getHours() : date.getHours()
+                let minutes = date.getMinutes() <= 9 ? "0" + date.getMinutes() : date.getMinutes()
+                let seconds = date.getSeconds() <= 9 ? "0" + date.getSeconds() : date.getSeconds()
+                let sfm = `${hour}:${minutes}:${seconds}`
+                result = result + " " + sfm
+            }
+            return result
+        }
+
+        console.log(timeType(+new Date(), { tab: "/", week: true, sfm: true }));
+    </script>
+</body>
+
+</html>

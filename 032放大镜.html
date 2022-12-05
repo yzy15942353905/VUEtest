@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .small {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            border: 1px solid black;
+            float: left;
+            margin: 20px;
+        }
+
+        .small img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .small .mask {
+            display: none;
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            opacity: 0.5;
+        }
+
+        .big {
+            display: none;
+            position: relative;
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            border: 1px solid black;
+            float: left;
+            margin: 20px;
+        }
+
+        .big .bigImg {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="small">
+        <img src="../image/big.jpg" alt="" class='123'>
+        <div class="mask"></div>
+    </div>
+
+    <div class="big">
+        <img src="../image/big.jpg" alt="" class="bigImg">
+    </div>
+
+
+
+    <script>
+        //第一步先获取所有节点
+        var small = document.querySelector('.small')
+        var mask = document.querySelector('.mask')
+        var big = document.querySelector('.big')
+        var bigImg = document.querySelector('.bigImg')
+
+        // 添加事件 判断鼠标是否进入或离开盒子  --》 mask和放大图 显示或隐藏
+        small.addEventListener('mouseover', function () {
+
+            mask.style.display = 'block'
+            big.style.display = 'block'
+        })
+        small.addEventListener('mouseout', function () {
+
+            mask.style.display = 'none'
+            big.style.display = 'none'
+        })
+
+
+        small.addEventListener('mousemove', function (e) {
+            //mask最大移动距离，因为是正方形所以 长宽最大移动距离相等
+            var maskBigMove = this.offsetWidth - mask.offsetWidth
+
+            var maskMove = this.offsetLeft + mask.offsetWidth / 2
+
+            //mask 设置在鼠标中心   
+            var maskX = e.pageX - maskMove
+            var maskY = e.pageY - maskMove
+
+            //限制mask在父盒子内移动  
+            if (maskX < 0) {
+                maskX = 0
+            } else if (maskX > maskBigMove) {
+                maskX = maskBigMove
+            }
+
+            if (maskY < 0) {
+                maskY = 0
+            } else if (maskY > maskBigMove) {
+                maskY = maskBigMove
+            }
+
+            //实现mask移动
+            mask.style.top = maskY + 'px'
+            mask.style.left = maskX + 'px'
+
+            //大图片走的距离/mask盒子都的距离 = 大图片/小图片
+            //大图片最大移动距离
+            bigImg.style.top = -(maskY * bigImg.offsetWidth / small.offsetWidth) + 'px'
+            bigImg.style.left = -(maskX * bigImg.offsetWidth / small.offsetWidth) + 'px'
+
+
+        })
+
+
+    </script>
+</body>
+
+</html>

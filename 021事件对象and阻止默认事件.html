@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a {
+            display: block;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <a href="http://www.baidu.com"></a>
+
+    <script>
+        var a = document.querySelector('a')
+        a.onclick = function (e) {
+            //解决兼容问题
+            e = e || window.event
+            console.log(e);
+            console.log(e.type) //click
+
+            //阻止默认事件 --标准
+            // e.preventDefault();
+            //ie 6-8使用
+            // e.returnValue();
+
+            // 也可以这样写但是后面代码不再执行
+            return false
+            // alert(111)   得不到执行
+
+        }
+    </script>
+</body>
+
+</html>

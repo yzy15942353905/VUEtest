@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>只能用一次</button>
+    <script>
+
+        var btn = document.querySelector('button')
+        btn.addEventListener('click', func)
+
+        function func() {
+            alert(1)
+            //删除需要函数名，所以添加事件监听时不要使用匿名函数
+            btn.removeEventListener('click', func)
+
+        }
+
+    </script>
+</body>
+
+</html>

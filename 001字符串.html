@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var s = "123456789123"
+        var word = "zhaohaoyanzhao"
+        var WORD = "ZHAOHAOYAN"
+        console.log(s.indexOf("123"));     //0
+        // 假如第二个参数是 50，则从位置 50 开始检索，直到字符串的起点。
+        console.log(s.indexOf("123", 4));  // 9
+
+        console.log(s.search(123));  // 0 
+        /*
+        两种方法，indexOf() 与 search()，是相等的。
+
+        这两种方法是不相等的。区别在于：
+
+        search() 方法无法设置第二个开始位置参数。
+        indexOf() 方法无法设置更强大的搜索值（正则表达式）。*****
+ */
+
+
+
+
+        /* 
+         有三种提取部分字符串的方法：
+        
+            slice(start, end)
+            substring(start, end)
+            substr(start, length)
+         */
+
+        // slice   第一个参数应比第二个小，否则返回空值
+        console.log(s.slice(1, 5)); //2345
+
+        console.log(s.slice(-9, -5));//4567
+        // 如果省略第二个参数，则该方法将裁剪字符串的剩余部分：
+        console.log(s.slice(1));//23456789123
+
+        console.log(s.substring(1)); //23456789123
+        // substring 不支持传递负值，返回原字符串
+        console.log(s.substring(-5)); //123456789123
+
+        /* substr() 类似于 slice()。
+        首个参数支持负值
+        不同之处在于第二个参数规定被提取部分的长度。 */
+        console.log(s.substr(1, 4));
+
+
+
+        /* replace() 方法不会改变调用它的字符串。它返回的是新字符串。
+        
+        默认地，replace() 只替换首个匹配： */
+        console.log(s.replace(123, 456));
+        // 如需执行大小写不敏感的替换，请使用正则表达式 /i（大小写不敏感）：
+        console.log(word.replace(/zhao/, "yang"))  //yanghaoyanzhao
+        console.log(WORD.replace(/zhao/, "yang"))  //ZHAOHAOYAN
+        // i 忽略大小写
+        console.log(word.replace(/zhao/i, "yang"))  //yanghaoyan
+        // g 开启全局搜索
+        console.log(word.replace(/zhao/g, "yang"))  //yanghaoyanyang
+        s
+
+        var ss = "              asd         "
+        console.log(ss.trim());
+        console.log(ss.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, ''));
+
+        // 以上两种方法都可以去除前后空格，但第二个兼容性更好
+
+
+        /*
+            提取字符串字符
+
+            这是两个提取字符串字符的安全方法：
+
+                charAt(position)
+                charCodeAt(position)
+
+        */
+
+        console.log(word.charAt(0));  //z
+
+        //返回Unicode值
+        console.log(word.charCodeAt(0));  //122
+
+        // 不起作用,也不报错
+        word[0] = "A"
+
+        console.log(word[0]);  //z
+        t = "abcd"
+        var arr = t.split("")
+        console.log(arr);
+
+        console.log(`"你好"`);
+
+        console.log(12.5.toFixed(5))
+
+
+        // o 在字符串中出现的次数
+
+        str = "psaiasfwfasifowpsaowoosssssssssssssssssssssssssssssssssssssssssaofoaosodoasdowofo"
+
+        index = str.indexOf('o')
+        count = 0
+        while (index != -1) {
+
+            count++
+            console.log(index);
+            index = str.indexOf('o', index + 1)
+
+        }
+        console.log(count);
+
+
+        console.log("--------------------------------");
+
+        //统计字符串中出现最多的字符
+        o = {
+
+        }
+        //先统计所有字符出现的次数
+        for (let index = 0; index < str.length; index++) {
+            var char = str.charAt(index)
+
+            if (o[char]) {
+                o[char]++
+            }
+            else
+                o[char] = 1
+
+        }
+        console.log(o);
+        //判断哪个字符出现次数最多
+        var maxChar = ''
+        var maxCount = 0
+
+        for (key in o) {
+
+            if (o[key] > maxCount) {
+                maxChar = key
+                maxCount = o[key]
+            }
+
+        }
+
+        console.log(maxChar, maxCount);
+
+
+        // 电话号隐藏后四位
+        //repeat重复函数
+        phone.slice(0, -4) + "*".repeat(4) //1594235****
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

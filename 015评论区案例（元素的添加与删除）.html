@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button class="pl">评论</button>
+    <hr>
+    <hr>
+    <ul class="plq">
+        评论区
+    </ul>
+    <script>
+        var textarea = document.querySelector('textarea')
+        var button = document.querySelector('.pl')
+        var ull = document.querySelector('.plq')
+
+
+
+        button.onclick = function () {
+
+            var li = document.createElement('li')
+            var btn = document.createElement('button')
+            li.innerHTML = textarea.value
+            btn.innerHTML = '删除'
+
+            //向后添加
+            ull.appendChild(li)
+            li.appendChild(btn)
+
+            btn.onclick = function () {
+
+                ull.removeChild(li)
+            }
+            //向前添加
+            // ull.insertBefore(li, ull.children[0])
+            textarea.value = ''}
+    </script>
+</body>
+
+</html>

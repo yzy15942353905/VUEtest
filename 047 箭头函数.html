@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        let func = (a, b) => {
+            console.log(a + b);
+        }
+
+        func(1, 2) //3
+
+        //若函数体只有一行,大括号可以省略
+        let func2 = (a, b) => console.log(a + b);
+
+        func2(2, 3) //5
+
+        //重点  箭头函数的this 不指向自己，而是指向箭头函数外层
+
+        // eg
+        name = "windo"
+        let func3 = {
+            name: "外",
+            say: () => {
+                console.log(this.name);
+            }
+        }
+        func3.say() //windo
+    </script>
+</body>
+
+</html>

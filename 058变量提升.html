@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //变量提升是指 var a = 5 拆成 var a ; a = 5
+        //函数提升 优先级高于 变量提升
+        console.log(a); //undefined   
+        // console.log('fn', fn);
+        console.log('a', a);
+        var a = 5
+        console.log('a', a);
+
+        // console.log(a);
+        // 函数这样写不会提升
+        function a() {
+            console.log(1);
+        }
+        console.log('a', a);
+
+    </script>
+</body>
+
+</html>

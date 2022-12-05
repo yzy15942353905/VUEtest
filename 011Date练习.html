@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./moment.js"></script>
+</head>
+
+<body>
+    <p id="time"></p>
+    <script>
+        var date = new Date()
+        console.log(date);
+        var date1 = new Date(2019, 10, 12)   //Tue Nov 12 2019 00:00:00 GMT+0800 (中国标准时间)   这样输入参数，月份是 0-11
+        console.log(date1);
+        //常用
+        var date2 = new Date("2019,10,10")   //Thu Oct 10 2019 00:00:00 GMT+0800 (中国标准时间)   字符串常用
+        console.log(date2);
+
+        console.log(date.getFullYear());  //返回当前年
+        console.log(date.getMonth() + 1);     // 返回月份 0-11 所以要加一
+        console.log(date.getDate());    //返回当前日
+        console.log(date.getDay());     //返回星期几   周日-周六  0 - 6 
+
+
+        setInterval(() => {
+            var curtime = +new Date()
+            var time = new Date("2023,1,1").getTime()
+            console.log(curtime);
+            console.log(time);
+            document.getElementById('time').innerText = moment.duration(time - curtime,"years")
+        }, 1000);
+
+
+
+
+        //获取毫秒数 1970 1 1
+        //常用写
+        var date3 = +new Date()
+        console.log(date3);
+        console.log(date.getTime());
+        //H5新增,兼容性
+        console.log(Date.now());
+    </script>
+
+
+</body>
+
+</html>

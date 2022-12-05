@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        //第一种方法
+        var obj = {
+            name: "张三",
+            sex: "男",
+            sayHei() {
+                console.log(this.name)
+                alert(1)
+            }
+        }
+
+        // 第二种方法
+
+        var obj1 = new Object()
+        obj1.name = '鸣人'
+        obj1.sex = '男'
+        obj1.LUOXUANWAN = function () {
+            alert("释放螺旋丸")
+        }
+
+        obj1.LUOXUANWAN()
+
+        // 通过构造函数
+
+        function Star(name, sex) {
+            this.name = name
+            this.sex = sex
+
+        }
+
+        var zxc = new Star('周星驰', '男')
+        console.log(zxc);
+
+
+        console.log(Math.round(-1.1));
+        console.log(Math.round(-1.5));
+
+    </script>
+
+</body>
+
+</html>

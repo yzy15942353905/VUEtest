@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Promise学习</title>
+</head>
+
+<body>
+</body>
+<script>
+    new Promise((resolve) => {
+        setTimeout(() => {
+            console.log("setTimeout")
+
+        }, 0)
+        resolve()
+        console.log("promise")
+    }).then((res) => {
+        console.log("succss")
+    })
+    console.log("后盾人")
+</script>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        th,
+        td {
+            width: 50px;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>123</th>
+                <th>123</th>
+                <th>123</th>
+                <th>123</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+
+    </table>
+    <script>
+
+        data = [
+
+            {
+                name: '124',
+                sex: '男',
+                age: 47
+            },
+            {
+                name: '12',
+                sex: '男',
+                age: 44
+            },
+            {
+                name: '13',
+                sex: '男',
+                age: 45
+            }
+        ]
+
+
+        var tbody = document.querySelector('tbody')
+        for (var i = 0; i < data.length; i++) {
+            var tr = document.createElement('tr')
+            tbody.appendChild(tr)
+
+
+            for (let key in data[i]) {
+
+                var td = document.createElement('td')
+                td.innerHTML = data[i][key]
+                tr.appendChild(td)
+                var btn = document.createElement('button')
+                btn.innerHTML = '删除'
+            }
+            var btn = document.createElement('button')
+            btn.innerHTML = '删除'
+
+            var td = document.createElement('td')
+            td.appendChild(btn)
+            tr.appendChild(td)
+        }
+
+
+        var btns = document.querySelectorAll('button')
+        for (let index = 0; index < data.length; index++) {
+
+
+            btns[index].onclick = function () {
+
+                tbody.removeChild(this.parentNode.parentNode)
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

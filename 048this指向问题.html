@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /*  默认绑定: console.log(this==window)
+            隐式绑定: (参数赋值,隐式丢失)
+                    谁调用函数,this就指向谁,自我调用指向window:
+                    func();
+                    立即执行函数
+                    闭包
+                    只要没人调用,默认为window调用
+            显式绑定:call apply bind
+            new 方式  
+        */
+        var obj = {
+            name: "obj",
+            foo: function () {
+                console.log(this);  //obj
+
+                //再定义一个函数
+                // function test() {
+                //     console.log(this); //win
+                // }
+                // test()
+
+                //定义一个立即执行函数
+                //立即执行函数参数括号建议放在外面
+                // (function () {
+                //     console.log(this);  //win
+                // })()
+
+                //定义一个闭包
+                // function bibao() {
+                //     console.log(this); //win
+                // }
+                // return bibao
+            }
+
+
+        }
+
+        //定义函数默认挂载再window上
+        function func() {
+            console.log(this); //win
+        }
+        //普通调用
+        // obj.foo()
+        //闭包调用
+        // obj.foo()()
+        // func()
+
+
+        function f1() {
+
+            console.log(this); //win
+        }
+        //f1的父函数,可以控制子函数的this指向
+        function f2(fn) {
+
+            console.log(this); //win
+
+            fn() // 自主调用,所以56行输出win
+            fn.call(f) // 指向f
+
+        }
+
+        var f = {
+            a: 5,
+            f1: f1
+        }
+
+        f2(f.f1)
+
+
+
+        var arr = [1, 2, 3]
+        //高阶函数,参数中可以传入this指向
+        arr.sort(function (a, b) {
+            console.log(this);  //win
+            return a - b
+        }, this)
+        arr.forEach(function (value, index, array) {
+
+            console.log(this);  //win
+        })
+
+        setInterval(() => {
+            console.log(this);  //win
+        }, interval);
+    </script>
+</body>
+
+</html>

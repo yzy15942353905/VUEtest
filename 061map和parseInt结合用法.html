@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        var arr = ['1', '2', '3'].map(parseInt)
+
+        console.log(arr);
+        /*
+
+        map 传入一个函数 返回一个数组 传入数组第一个值和下标
+                arr[0]  =  parseInt('1',0)
+                           parseInt('2',1)
+                           parseInt('3',2)
+
+        parseInt(需要转换的值，进制)
+        进制仅支持 2 - 36 因为26个字母 + 10数字表示一位数
+        若传入的是0 
+                    需要转换的值前面有0x||0X 表示16进制
+                    否则是 10进制
+        若传入 0 和 2-36 以外都返回NaN
+
+        */
+
+        var arr1 = ['0b11', '0x12', '013'].map(parseInt)
+        // 0 NaN 1
+        console.log(arr1);
+    </script>
+
+</body>
+
+</html>

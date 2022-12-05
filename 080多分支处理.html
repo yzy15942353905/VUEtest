@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const fun = (name) => {
+            const map = {
+                1: () => { console.log(1, 1); },
+                2: () => { console.log(2, 2); },
+                3: () => { console.log(3, 3); },
+                4: () => { console.log(4, 4); },
+            }
+
+            map[name] ? map[name]() : console.log("我也不知道你要干哈");
+        }
+        fun(555)
+        /*         const fun = (name) => {
+                    const map = [
+                        [
+                            () =>
+                                name.includes("牛")
+                            ,
+                            () => {
+                                console.log("牛乐园111");
+                            },
+                        ],
+                        [
+                            () =>
+                                name.includes("牛")
+                            ,
+                            () => {
+                                console.log("牛乐园");
+                            },
+                        ],
+        
+                    ]
+                    // let target = map.filter(m => m[0]())  // Array*2  匹配多个结果
+                    // console.log(target);
+                    // if (target) {
+                    //     target.forEach(v => {
+                    //         v[1]()
+                    //     })
+                    // }
+                    let target = map.find(m => m[0]())  // Array  匹配一个结果
+                    console.log(target);
+                    if (target) {
+                        target[1]()
+                    }
+                }
+        
+                fun("小牛") */
+    </script>
+</body>
+
+</html>

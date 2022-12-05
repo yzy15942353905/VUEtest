@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1 三位加逗号
+        let a = 99999999  // 注意是数字，不能是字符串
+        console.log(a.toLocaleString()); // 99,999,999
+
+        // 2 时间戳转为 日期
+        let b = new Date()
+        console.log(b.toLocaleString());  // 2022/11/16 10:04:27
+
+        // 3 数字转为百分数
+        let c = .9  // 注意是数字，不能是字符串
+        console.log(c.toLocaleString('zh', { style: "percent" }));  // 90%
+    </script>
+</body>
+
+</html>

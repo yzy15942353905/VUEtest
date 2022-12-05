@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .fu {
+            height: 40px;
+            width: 300px;
+            margin: 400px auto;
+            border: 1px solid black;
+            display: flex;
+        }
+
+        .fu>li {
+            height: 40px;
+            width: 33.33%;
+            border-right: 1px solid black;
+            background-color: pink;
+        }
+
+        .fu>li div {
+            height: 40px !important;
+            line-height: 40px;
+            text-align: center;
+        }
+
+        .nav {
+            display: none;
+        }
+
+        .nav li {
+            text-align: center;
+            border: 1px solid black;
+            border-top: none;
+
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="fu">
+        <li>
+            <div>
+                <a href="">1</a>
+            </div>
+
+            <ul class="nav">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </li>
+        <li>
+            <div>
+                <a href="">1</a>
+            </div>
+            <ul class="nav">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </li>
+        <li>
+            <div>
+                <a href="">1</a>
+            </div>
+            <ul class="nav">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        var fu = document.querySelector('.fu')
+        var lis = fu.querySelectorAll('li')
+
+        for (let index = 0; index < lis.length; index++) {
+            lis[index].onmouseover = function () {
+
+                lis[index].children[1].style.display = 'block'
+            }
+            lis[index].onmouseout = function () {
+
+                lis[index].children[1].style.display = 'none'
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

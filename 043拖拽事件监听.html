@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+
+            margin: 100px;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        .boxx {
+
+            margin: 100px;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" draggable="true"></div>
+    <div class="boxx"></div>
+    <script>
+        // 监听被拖拽元素
+        var box = document.querySelector('.box')
+        box.addEventListener('dragstart', function () {
+
+            console.log("开始拖拽了");
+        })
+
+        box.addEventListener('dragend', function () {
+
+            console.log("拖拽结束了");
+        })
+        box.addEventListener('drag', function () {
+
+            console.log("我正在拖拽");
+        })
+        ondragleave
+        box.addEventListener('dragleave', function () {
+
+            console.log("我已经离开box了");
+        })
+
+        //监听被拖拽元素拖拽至其他元素。
+
+        var boxx = document.querySelector(".boxx")
+        boxx.addEventListener('dragenter', function () {
+            console.log("拖进来了");
+        })
+        boxx.addEventListener('dragleave', function () {
+            console.log("拖出去了");
+        })
+        boxx.addEventListener('dragover', function (e) {
+            // 【重要】一定要加这一行代码，否则，后面的方法 ondrop() 无法触发。
+            e.preventDefault();
+            console.log("我在里面");
+        })
+        
+        boxx.addEventListener('drop', function () {
+            console.log("我放里面了");
+        })
+    </script>
+</body>
+
+</html>

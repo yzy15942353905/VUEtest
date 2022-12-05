@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="fu">
+        <div class="zi">
+            <ul>
+                <li>123</li>
+                <li>123</li>
+                <li>123</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script>
+
+        var zi = document.querySelector('.zi')
+        console.log(zi.parentNode);
+        //返回所有节点（包含文本节点与元素节点）
+        console.log(zi.childNodes);
+
+        //常用
+        console.log(zi.children);
+    </script>
+</body>
+
+</html>

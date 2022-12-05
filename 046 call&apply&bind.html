@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var car = {
+            name: "喵喵",
+            say(food, food2) {
+                console.log(this.name, "爱吃" + food, food2);
+            }
+        }
+        var dog = {
+            name: "dog"
+        }
+
+        //让car中的this,指向dog 
+        //立即执行函数
+        // car.say.call(dog,参数)
+        car.say.call(dog, "骨头", "水") //dog 爱吃骨头 水
+        car.say.apply(dog, ["骨头", "水"])//dog 爱吃骨头 水
+
+        //call 和 apply 的区别就是传递参数方式不同,都会立即执行函数
+
+        car.say.bind(dog, "骨头", "水")  // 什么也不输出
+        let func = car.say.bind(dog, "骨头", "水")  // 什么也不输出
+        func(); //dog 爱吃骨头 水
+        // 上面两行代码  == call
+        // bind 用一次后函数可一直使用方便些
+    </script>
+</body>
+
+</html>

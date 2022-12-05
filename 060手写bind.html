@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        // 首先了解bind
+
+        function fn(a, b) {
+
+            console.log(this, a, b);
+
+        }
+
+        //改变函数的this指向，并返回一个函数
+        // var newFn = fn.bind({})
+        // newFn(1, 2)
+
+        /* 
+        重写bind 
+        1. 写在哪？
+        2.返回一个函数
+        3.返回函数带有参数
+
+        
+        */
+
+        Function.prototype.myBind = function (t) {
+            //这里的this是指调用mybind的函数
+            var fn = this
+            return function () {
+                // 注意这里的this为window，arguments接受参数
+                fn.apply(t, arguments)
+            }
+
+
+        }
+        var newFn = fn.myBind({})
+
+        newFn(1, 2)
+    </script>
+</body>
+
+</html>

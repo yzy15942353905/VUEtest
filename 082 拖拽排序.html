@@ -1,0 +1,72 @@
+<!--
+ * @Author: Yz_brightFuture 10409053+yz-brightfuture@user.noreply.gitee.com
+ * @Date: 2022-11-14 14:19:45
+ * @LastEditors: Yz_brightFuture 10409053+yz-brightfuture@user.noreply.gitee.com
+ * @LastEditTime: 2022-11-30 22:06:53
+ * @FilePath: \JS基础练习\082 拖拽排序.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .list>li {
+            list-style: none;
+            width: 100px;
+            height: 20px;
+            border-radius: 10px;
+            margin-top: 5px;
+            background-color: skyblue;
+        }
+
+        .moving {
+            border: 1px solid red;
+            background-color: transparent !important
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="list">
+        <li draggable="true">1</li>
+        <li draggable="true">2</li>
+        <li draggable="true">3</li>
+        <li draggable="true">4</li>
+        <li draggable="true">5</li>
+    </ul>
+    <script>
+        let curLi = undefined
+        let list = document.querySelector('.list')
+        list.addEventListener('dragstart', (e) => {
+
+            setTimeout(() => {
+                e.target.classList.add('moving')
+            }, 0);
+            curLi = e.target
+        })
+        list.addEventListener('dragenter', (e) => {
+            e.preventDefault()
+            if (e.target == list || e.target == curLi)
+                return
+            let children = Array.from(list.children)
+            if (children.indexOf(curLi) > children.indexOf(e.target)) {
+                console.log("上");
+                list.insertBefore(curLi, e.target)
+            } else {
+                console.log("下");
+                list.insertBefore(curLi, e.target.nextElementSibling)
+            }
+        })
+        list.addEventListener('dragend', (e) => {
+            e.preventDefault()
+            e.target.classList.remove('moving')
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        let div = document.querySelector("div")
+        const zero = (str) => {
+            let zeroNum = 6 - str.length
+            let newStr = ""
+            while (zeroNum > 0) {
+                newStr += "0"
+                zeroNum--
+            }
+            return "#" + newStr + str
+        }
+
+        div.style.backgroundColor = zero((~~(Math.random() * (1 << 24))).toString(16))
+        // outline 不会改变布局
+    </script>
+</body>
+
+</html>

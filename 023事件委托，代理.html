@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            list-style: none;
+            width: 100%;
+
+        }
+
+        .cur {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul class="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </ul>
+
+    <script>
+        let list = document.querySelector('.list')
+
+        var ul = document.querySelector('ul')
+        ul.addEventListener('click', function (e) {
+            if (e.target == list)
+                return
+            lis = e.target.parentNode.children
+            li_cur = document.querySelector('.cur')
+            if (li_cur) {
+                li_cur.classList.remove('cur')
+            }
+
+            e.target.classList.add('cur')
+        })
+    </script>
+</body>
+
+</html>

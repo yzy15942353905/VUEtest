@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="text">
+    <button>发送</button>
+
+    <script>
+
+        var btn = document.querySelector('button')
+        var i = 10
+        function djs() {
+            if (i == 0) {
+                btn.disabled = ''
+                btn.innerHTML = '发送'
+                clearInterval(Interval)
+
+            }
+            else {
+                i--
+                btn.innerHTML = i + '秒后重新发送'
+            }
+
+        }
+
+        btn.addEventListener('click', function () {
+
+            this.disabled = 'true'
+            i = 10
+            djs()
+            var Interval = setInterval(djs, 1000)
+
+        })
+    </script>
+</body>
+
+</html>

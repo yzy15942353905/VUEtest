@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点我</button>
+    <script>
+        // function debounce(fn, delay) {
+        //     // 维护一个 timer
+        //     let timer = null;
+
+        //     return function () {
+        //         // 通过 ‘this’ 和 ‘arguments’ 获取函数的作用域和变量
+        //         let context = this;
+        //         let args = arguments;
+
+        //         clearTimeout(timer);
+        //         timer = setTimeout(function () {
+        //             fn.apply(context, args);
+        //         }, delay);
+        //     }
+        // }
+
+        var btn = document.querySelector("button")
+        function func() {
+            console.log(this);
+            console.log(arguments);
+            console.log(1);
+        }
+
+        //防抖动
+        function debounce(fn, delay = 100) {
+            var timer = null;
+            return function () {
+                if (timer) clearTimeout(timer)
+                timer = setTimeout(() => {
+                    fn().apply(this, arguments)
+                    timer = null
+                }, delay)
+            };
+        }
+        // btn.addEventListener("click", debounce(func, 1000))
+
+
+
+        //节流阀
+
+        function throttle(fn, delay) {
+
+            var begin = 0
+            return function () {
+                var cur = +new Date()
+                if (cur - begin > delay) {
+                    fn.apply(this, arguments)
+                    begin = cur
+                }
+            }
+        }
+
+        btn.addEventListener("click", throttle(func, 2000))
+
+    </script>
+</body>
+
+</html>

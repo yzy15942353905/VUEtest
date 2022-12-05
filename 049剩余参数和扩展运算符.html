@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        //...args 可以接受多个参数合并为一个数组,但后面不能再加参数
+        function func(first, ...args) {
+            console.log(first); //1
+            console.log(args)   // [2,3,4]
+        }
+        func(1, 2, 3, 4)
+
+
+        //eg
+
+        // 参数求和
+        const sum = (...args) => {
+
+            let total = 0
+            // 注意 forEach里面的代码，写得 很精简
+            args.forEach(item => total += item)
+            return total
+        }
+        console.log(sum(1, 2, 3, 4));
+
+
+        // 剩余参数和解构赋值配合使用
+        const studentList = ["张三", "李四", "王五"]
+        let [first, ...args] = studentList
+        console.log(first); //张三
+        console.log(args);  //['李四', '王五']
+
+
+
+        arr = [1, 2, 3, 4]
+        console.log(arr);// [1, 2, 3, 4]
+        console.log(...arr);//1 2 3 4
+        //为什么输出...arr 逗号会消失
+        //因为console.log会把逗号当分隔符，不信你看看
+        console.log(1, 2, 3, 4); //1 2 3 4
+
+
+        // 扩展运算符（展开语法）
+
+        // 数组赋值
+
+        var arr2 = [1, 2, 3]
+        var arr3 = arr2  //就是让arr3 指向arr2的内存地址
+
+        var arr4 = [...arr2]  //就会开辟新空间
+
+        arr2.push('你懂的') // arr2 修改 arr3也会修改
+        /* 
+            栈内存  堆内存
+
+            内存地址  =>  [数据]                                
+        */
+
+        console.log(arr3); //[1, 2, 3, '你懂的']
+        console.log(arr4); //[1, 2, 3]
+
+
+        const myDivs = document.getElementsByClassName('div');
+        const divArr = [...myDivs]; // 利用扩展运算符，将伪数组转为真正的数组
+
+        let arr2 = Array.from(arrayLike); //也可以
+    </script>
+</body>
+
+</html>

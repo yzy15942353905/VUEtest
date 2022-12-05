@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        div {
+            position: absolute;
+
+            margin-top: 20px;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            transition: linear
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn500">点我移动盒子500</button>
+
+    <button class="btn800">点我移动盒子800</button>
+
+    <div></div>
+
+    <script>
+        var div = document.querySelector('div')
+        var btn500 = document.querySelector('.btn500')
+        var btn800 = document.querySelector('.btn800')
+
+
+        //动画封装函数，配有回调函数
+        function donghua(obj, target, callback) {
+
+            //先清空之前定时器，防止多个定时器共同运行会使速度加快
+            clearInterval(obj.timer)
+
+            //防止定时器重复
+            obj.timer = setInterval(() => {
+
+                if (obj.offsetLeft == target) {
+                    clearInterval(obj.timer)
+
+
+                    //如果存在回调函数，则在定时器结束后调用
+                    if (callback) {
+                        callback()
+                    }
+                }
+                //匀速移动
+                // div.style.left = div.offsetLeft + 1 + 'px'
+
+                //减速移动
+
+                var spe = (target - obj.offsetLeft) / 10
+
+                spe = spe > 0 ? Math.ceil(spe) : Math.floor(spe)
+                // console.log(spe);
+                obj.style.left = obj.offsetLeft + spe + 'px'
+            }, 30);
+
+        }
+
+        btn500.addEventListener('click', function () {
+            donghua(div, 500, function () {
+                // div.style.backgroundColor = 'skyblue'
+                // div.style.display = 'none'
+            })
+        })
+        btn800.addEventListener('click', function () {
+            donghua(div, 800)
+        })
+
+
+    </script>
+</body>
+
+</html>

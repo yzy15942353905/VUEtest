@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="animate.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+
+            position: relative;
+            margin: 200px auto;
+            width: 500px;
+            height: 50px;
+            display: flex;
+        }
+
+        .cloud {
+            content: "";
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: -1;
+            display: block;
+            width: 100px;
+            height: 50px;
+            /* background-color: skyblue; */
+            background-image: url(../image/123.png);
+            opacity: .5;
+        }
+
+        ul li {
+            list-style: none;
+            width: 20%;
+            height: 100%;
+            /* background-color: pink; */
+            text-align: center;
+            line-height: 50px;
+            border-right: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul>
+        <div class="cloud">
+        </div>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+
+    <script>
+        var ul = document.querySelector('ul')
+        var cloud = document.querySelector('.cloud')
+
+        var lis = document.querySelectorAll('ul li')
+        var start = 0
+        // console.log(lis);
+        for (let index = 0; index < lis.length; index++) {
+            lis[index].addEventListener('mouseenter', function () {
+                animate(cloud, lis[index].offsetLeft)
+            })
+            lis[index].addEventListener('mouseleave', function () {
+                animate(cloud, start)
+            })
+
+        }
+        for (let index = 0; index < lis.length; index++) {
+            lis[index].addEventListener('mouseleave', function () {
+                animate(cloud, start)
+            })
+        }
+        for (let index = 0; index < lis.length; index++) {
+            lis[index].addEventListener('click', function () {
+
+                start = lis[index].offsetLeft
+            })
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        var reg = new RegExp("a")
+        var str1 = "aaaa"
+        var str2 = "bbbb"
+
+        console.log(reg.test(str1)); //true
+        console.log(reg.test(str2)); //false
+
+        var reg2 = new RegExp("A", "i")
+        console.log(reg2.test(str1)); //true
+        
+    </script>
+</body>
+
+</html>

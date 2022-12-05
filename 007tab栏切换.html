@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .tab {
+            margin: 100px auto;
+            width: 500px;
+            height: 400px;
+
+        }
+
+        .tab .thead {
+            height: 40px;
+            background-color: pink;
+            border: 1px solid red;
+
+        }
+
+        .tab .thead ul {
+            display: flex;
+            height: 40px;
+        }
+
+        .tab .thead ul li {
+            width: 25%;
+            height: 100%;
+            border-right: 1px solid black;
+        }
+
+        .cur {
+            background-color: skyblue;
+        }
+
+        .display-none {
+            display: none;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="thead">
+            <ul>
+                <li class="cur">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+        </div>
+        <div class="content">
+            <div>1</div>
+            <div class="display-none">2</div>
+            <div class="display-none">3</div>
+            <div class="display-none">4</div>
+        </div>
+    </div>
+
+    <script>
+
+        var lis = document.querySelectorAll('li')
+
+        var contents = document.querySelector('.content').querySelectorAll('div')
+        for (let index = 0; index < lis.length; index++) {
+
+            // lis[index].setAttribute('index', index)
+            lis[index].onclick = function () {
+
+                for (let index = 0; index < lis.length; index++) {
+                    lis[index].className = ''
+
+                }
+
+                lis[index].className = 'cur'
+
+                for (let index = 0; index < contents.length; index++) {
+                    contents[index].style.display = 'none'
+                }
+
+                contents[index].style.display = 'block'
+            }
+        }
+    </script>
+</body>
+
+</html>

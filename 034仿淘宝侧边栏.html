@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            position: absolute;
+            top: 300px;
+            right: 20px;
+        }
+
+        ul li {
+            list-style: none;
+            width: 40px;
+            height: 40px;
+            background-color: pink;
+            border-top: 1px solid black;
+        }
+
+        .up {
+            display: none;
+        }
+
+        body {
+
+            height: 2000px;
+        }
+
+        .header {
+            height: 100px;
+            width: 75%;
+            background-color: pink;
+        }
+
+        .nav {
+            margin-top: 20px;
+            height: 150px;
+            width: 75%;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header"></div>
+    <div class="nav"></div>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li class="up">3</li>
+        <li>4</li>
+    </ul>
+
+    <script>
+        var ul = document.querySelector('ul')
+        var up = document.querySelector('.up')
+        var nav = document.querySelector('.nav')
+        var navTop = nav.offsetTop
+        var ulTop = ul.offsetTop - navTop
+        document.addEventListener('scroll', function () {
+
+            if (window.pageYOffset >= navTop) {
+
+                //改为固定定位
+                ul.style.position = 'fixed'
+
+                ul.style.top = ulTop + 'px'
+                //显示返回顶部按钮
+                up.style.display = 'block'
+
+            }
+            else {
+                ul.style.position = 'absolute'
+                //盒子原来的的top
+                ul.style.top = 300 + 'px'
+
+                //隐藏返回顶部按钮
+                up.style.display = 'none'
+
+            }
+        })
+
+        up.addEventListener('click', function () {
+
+            //返回顶部
+            scrollTo(0, 0)
+        })
+    </script>
+</body>
+
+</html>

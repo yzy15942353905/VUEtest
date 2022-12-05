@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 390px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        const box = document.querySelector('#box')
+        let arr = [{
+            name: "一等奖",
+            is: true
+        }, {
+            name: "二等奖"
+        }, {
+            name: "三等奖"
+        }, {
+            name: "四等奖"
+        }, {
+            name: "五等奖"
+        }, {
+            name: "六等奖"
+        }, {
+            name: "七等奖"
+        }, {
+            name: "八等奖"
+        }, {
+            name: "八等奖"
+        },]
+        let arr2 = arr.map((v) => {
+            return `<div style="width: 30%;margin-left:5px;background-color: blue;">${v.name}</div>`
+        })
+
+        arr2 = arr2.join("")
+        box.innerHTML = arr2
+        let index = [0, 1, 2, 5, 8, 7, 6, 3]
+        index.forEach(v=>{
+
+            setTimeout
+        })
+    </script>
+</body>
+
+</html>

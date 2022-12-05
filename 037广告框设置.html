@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: #f5f3ef;
+        }
+
+        .father {
+            position: fixed;
+            height: 100px;
+            width: 100%;
+            bottom: 0;
+            background-color: #fff;
+            transition: all 1s;
+        }
+
+        .son {
+            position: absolute;
+            width: 60px;
+            height: 25px;
+            border-radius: 11px;
+            bottom: 95px;
+            background-color: #fff;
+            text-align: center;
+            line-height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son">1</div>
+    </div>
+
+    <script>
+
+        var son = document.querySelector('.son')
+        son.flag = 1
+
+        son.addEventListener('click', function () {
+
+            if (son.flag == 1) {
+                this.parentNode.style.bottom = -100 + 'px'
+                son.flag = 0
+            }
+
+            else if (son.flag == 0) {
+                this.parentNode.style.bottom = 0
+                son.flag = 1
+            }
+
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>123</button>
+    <script>
+
+
+        //浅拷贝
+
+        // Object.assign(obj1, obj2)
+        // 浅拷贝还是同一个内存地址
+
+
+
+        // obj2 => obj1
+        // 属性名相同就是直接覆盖
+        // 方法：深拷贝两对象不是同一内存地址
+        // 深拷贝
+        function deepCopy(newObj, oldObj) {
+            for (let key in oldObj) {
+                // 获取属性值 oldObj[key]
+                let item = oldObj[key];
+                // 判断这个值是否是数组
+                if (item instanceof Array) {
+                    newObj[key] = [];
+                    deepCopy(newObj[key], item);
+                } else if (item instanceof Object) {
+                    // 判断这个值是否是对象
+                    newObj[key] = {};
+                    deepCopy(newObj[key], item);
+                } else {
+                    // 简单数据类型，直接赋值
+                    newObj[key] = item;
+                }
+            }
+        }
+
+        function deepCopy1(val) {
+            //不是原始属性，即对象和数组
+
+            //判断是否为数组
+            if (Array.isArray(val)) {
+                var cloneArr = []
+                for (let index = 0; index < val.length; index++) {
+                    cloneArr[index] = deepCopy1(val[index])
+                }
+                return cloneArr
+            }
+            //判断是否为对象
+            // typeof null  --- object
+            if (typeof val === 'object' && val !== null) {
+                var cloneObj = {}
+                for (const key in val) {
+                    cloneObj[key] = val[key]
+                }
+                return cloneObj
+            }
+            return val;
+        }
+
+        function deepCopy2(val) {
+            return JSON.parse(JSON.stringify(val))
+        }
+
+        var a1 = [1, 2, 3, { 1: 1, 2: 2, 3: { 1: 2, 1: 2 } }]
+        var a2 = deepCopy1(a1)
+        console.log(a2);
+        console.log(a1 == a2) //false
+    </script>
+</body>
+
+</html>

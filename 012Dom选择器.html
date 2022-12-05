@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="nav">
+        你好
+    </div>
+    <ul>
+        <li>你好</li>
+        <li>你好</li>
+        <li>你好</li>
+        <li>你好</li>
+        <li>你好</li>
+    </ul>
+
+    <ol id="ol">
+        <li>你好123</li>
+        <li>你好123</li>
+        <li>你好123</li>
+        <li>你好123</li>
+        <li>你好123</li>
+
+    </ol>
+
+    <div class="nihao"></div>
+    <script>
+        var nav = document.getElementById('nav')
+        console.log(nav);
+        console.dir(nav)
+
+        var lis = document.getElementsByTagName('li')
+        console.log(lis);
+
+
+        //先取父元素，在降维打击。
+        var ol = document.getElementById('ol')
+        var liis = ol.getElementsByTagName('li')
+        console.log(liis);
+
+
+        //H5新方法  
+
+        document.getElementsByClassName('nihao')
+        document.querySelector(".nihao")
+        document.querySelector("#nav")
+        document.querySelectorAll("#nav")   //即使只有一个匹配，也会返回数组对象
+
+
+
+        //获取特殊的元素
+
+        var body = document.body
+        console.log(body);
+
+        var html = document.documentElement
+
+        var url = document.documentURI
+        console.log(url);
+
+
+
+
+
+
+
+        
+    </script>
+</body>
+
+</html>

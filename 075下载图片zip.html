@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jszip.min.js"></script>
+</head>
+
+<body>
+
+    <script>
+        imgArr = ["https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg", "https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg"]
+        const getImageBlob = (url) => {
+            return new Promise(resolve => {
+                const xhr = new XMLHttpRequest()
+                xhr.open("get", url, true)
+                xhr.responseType = 'blob'
+                xhr.onload = () => {
+                    resolve(xhr.response)
+                }
+                xhr.send()
+            })
+        }
+
+        const downloadImageZip = async () => {
+
+            const zip = new JSZip()
+
+            for (let index = 0; index < imgArr.length; index++) {
+
+                const blob = await getImageBlob(imgArr[index])
+                zip.file(`${index}.jpeg`, blob, { base64: true })
+            }
+            zip.generateAsync({
+                type: "blob",  // 压缩类型
+                // compression: "DEFLATE",      // STORE：默认不压缩 DEFLATE：需要压缩
+                // compressionOptions: {
+                //     level: 9  // 压缩等级1~9    1压缩速度最快，9最优压缩方式
+                //     // [使用一张图片测试之后1和9压缩的力度不大，相差100字节左右]
+                // }
+            })
+                .then(function (content) {
+                    // 压缩的结果为blob类型（二进制流）,可用作文件上传
+                    console.info("content", content);
+                    // 直接在浏览器打成car.zip包并下载，saveAs依赖的js是FileSaver.js
+                    location.href = URL.createObjectURL(content)
+                });
+
+        }
+        downloadImageZip()
+    </script>
+
+</body>
+
+</html>
